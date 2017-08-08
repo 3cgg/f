@@ -9,6 +9,8 @@ import me.libme.kernel._c.util.CliParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by J on 2017/8/8.
  */
@@ -22,12 +24,17 @@ public class MainFileRemover {
 
         // decode the parameter  --fileDskPath
 
-
         //decode the parameter --fileKeepTime
+
+        //decode the parameter --period
 
         CliParams cliParams=new CliParams(args);
 
         String fileDskPath= cliParams.getString("--fileDskPath");
+        Pattern pattern = Pattern.compile("[/|\\\\]+");
+        if(pattern.matcher(fileDskPath.trim()).matches()){
+            throw new IllegalArgumentException("--fileDskPath cannot be root directory.");
+        }
 
         Long fileKeepTime= cliParams.getLong("--fileKeepTime");
 
