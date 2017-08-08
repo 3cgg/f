@@ -36,7 +36,7 @@ public class MainFileRemover {
 
 
         SchedulerCfg schedulerCfg=new SchedulerCfg();
-        schedulerCfg.setDaemon(false); // set thread ad daemon, so the JVM cannot terminate
+        schedulerCfg.setDaemon(false); // set thread daemon false, so the JVM can not terminate
         schedulerCfg.setFileDskPath(fileDskPath);
         schedulerCfg.setFileKeepTime(fileKeepTime);
         schedulerCfg.setAliveCount(1);
